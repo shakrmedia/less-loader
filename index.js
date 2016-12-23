@@ -49,6 +49,10 @@ module.exports = function(source) {
 	// If present, add custom LESS plugins.
 	if (this.options[configKey]) {
 		config.plugins = config.plugins.concat(this.options[configKey].lessPlugins || []);
+
+		Object.keys(this.options[configKey]).forEach(function(attr) {
+			config[attr] = config[attr] || this.options[configKey][attr];
+		});
 	}
 
 	// not using the `this.sourceMap` flag because css source maps are different
