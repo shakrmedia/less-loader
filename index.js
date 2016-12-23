@@ -50,8 +50,8 @@ module.exports = function(source) {
 	if (this.options[configKey]) {
 		config.plugins = config.plugins.concat(this.options[configKey].lessPlugins || []);
 
-		Object.keys(this.options[configKey]).forEach(function(attr) {
-			config[attr] = config[attr] || this.options[configKey][attr];
+		Object.keys(loaderContext.options[configKey]).forEach(function(attr) {
+			config[attr] = config[attr] || loaderContext.options[configKey][attr];
 		});
 	}
 
