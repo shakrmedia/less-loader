@@ -44,7 +44,10 @@ module.exports = function(source) {
 	// Now we're adding the webpack plugin, because there might have
 	// been added some before via query-options.
 	config.plugins = config.plugins || [];
-	config.plugins.push(webpackPlugin);
+
+	if(!config.skipWebpackPlugin) {
+		config.plugins.push(webpackPlugin);
+	}
 
 	// If present, add custom LESS plugins.
 	if (this.options[configKey]) {
